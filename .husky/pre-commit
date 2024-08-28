@@ -13,7 +13,7 @@ bun run lint || npm run lint ||
 bun run prettier || npm run prettier ||
 (
     echo '🔨❌ Yoo, you have a problem in your code. Check prettier 🔨❌
-          Run npm run prettier, add changes and try commit again.';
+          Run npm run prettier:write, add changes and try commit again.';
     false;
 )
 

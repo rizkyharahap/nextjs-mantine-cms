@@ -9,9 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "postinstall": "npx husky init",
-    "prepare": "husky"
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "next": "14.2.7",
@@ -28,17 +26,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.7",
     "husky": "^9.1.5",
-    "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "typescript": "^5"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "npm run lint:fix",
-      "prettier --config ./.prettierrc --write"
-    ],
-    "**/*.{css,scss,md,html,json}": [
-      "prettier --config ./.prettierrc --write"
-    ]
   }
 }

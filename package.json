@@ -8,9 +8,9 @@
     "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint",
+    "lint-staged": "lint-staged",
     "lint:fix": "next lint --fix",
-    "prettier": "prettier --check \"**/*.{ts,tsx}\"",
-    "prettier:write": "prettier --write \"**/*.{ts,tsx}\""
+    "prettier": "prettier --check \"**/*.{json,js,ts,jsx,tsx,html}\""
   },
   "dependencies": {
     "@mantine/core": "^7.12.1",

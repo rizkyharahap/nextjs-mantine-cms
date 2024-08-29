@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { menus } from "@/constants/menus";
 import { NavLink, Stack, Title } from "@mantine/core";
+
+import { menus } from "@/constants/menus";
 
 import classes from "./Sidebar.module.css";
 
@@ -26,17 +28,17 @@ export function Sidebar() {
                 label={subItem.name}
                 childrenOffset={0}
                 className={classes.sectionLink}
-                active={pathname.includes(subItem.href)}
+                active={pathname.startsWith(subItem.href)}
                 leftSection={subItem.icon && <subItem.icon />}
               >
                 {subItem.dropdownItems?.map((dropdownItem) => (
                   <NavLink
                     variant="subtle"
-                    // component={RouterLink}
-                    // to={dropdownItem.href}
+                    component={Link}
+                    href={dropdownItem.href}
                     key={dropdownItem.name}
                     label={dropdownItem.name}
-                    active={pathname.includes(dropdownItem.href)}
+                    active={pathname === dropdownItem.href}
                     className={classes.sectionDropdownItemLink}
                     leftSection={<span className="dot" />}
                   />
@@ -45,10 +47,11 @@ export function Sidebar() {
             ) : (
               <NavLink
                 variant="subtle"
-                // component={RouterLink}
-                // to={subItem.href}
+                component={Link}
+                href={subItem.href}
                 key={subItem.name}
                 label={subItem.name}
+                active={pathname === subItem.href}
                 className={classes.sectionLink}
                 leftSection={subItem.icon && <subItem.icon />}
               />

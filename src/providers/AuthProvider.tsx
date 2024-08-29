@@ -9,8 +9,6 @@ import {
   useState,
 } from "react";
 
-import invariant from "tiny-invariant";
-
 import { loadAccessToken } from "@/services/axios";
 import { getAccount } from "@/services/resources/account";
 
@@ -49,6 +47,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  invariant(context, "useAuth must be used within an AuthProvider");
+
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+
   return context;
 }

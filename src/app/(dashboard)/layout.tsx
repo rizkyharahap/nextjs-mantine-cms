@@ -1,15 +1,16 @@
 import { Metadata } from "next";
 
-import { Logo } from "@/components/logo";
 import { Paper, ScrollArea } from "@mantine/core";
+
+import { Logo } from "@/components/logo";
 
 import { Header } from "./_components/Header";
 import { Sidebar } from "./_components/Sidebar";
 import classes from "./Layout.module.css";
 
 export const metadata: Metadata = {
-  title: "Admin | Retail",
-  description: "Admin Dashboard Retail from Enam Pilar Selaras",
+  title: "Teman Dokter CMS",
+  description: "Teman Dokter CMS",
 };
 
 export default function DashboardLayout({

@@ -1,4 +1,6 @@
 node_modules
-__generated__
+public
+build
+dist
 .next
 next-env.d.ts

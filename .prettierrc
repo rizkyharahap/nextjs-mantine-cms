@@ -4,7 +4,15 @@
   "singleQuote": false,
   "printWidth": 80,
   "tabWidth": 2,
-  "importOrder": ["^react", "^next", "<THIRD_PARTY_MODULES>", "^[@/]", "^[./]"],
+  "importOrder": [
+    "^react",
+    "^next",
+    "<THIRD_PARTY_MODULES>",
+    "^@mantine/(.*)$",
+    "^@tanstack/(.*)$",
+    "^[@/]",
+    "^[./]"
+  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderCaseInsensitive": true,

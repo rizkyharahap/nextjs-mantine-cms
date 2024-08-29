@@ -1,3 +1,3 @@
-export default function Home() {
-  return <main>Mantap</main>;
+export default function DashboardPage() {
+  return <main>DashboardPage</main>;
 }

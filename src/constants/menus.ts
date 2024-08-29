@@ -12,7 +12,7 @@ import {
   PiUsersDuotone,
 } from "react-icons/pi";
 
-import { routes } from "@/routes/paths";
+import { routes } from "./routes";
 
 interface MenuItem {
   header: string;
@@ -34,7 +34,7 @@ export const menus: MenuItem[] = [
     section: [
       {
         name: "Welcome",
-        href: routes.dashboard.home,
+        href: routes.dashboard.root,
         icon: PiStarDuotone,
       },
     ],
@@ -45,7 +45,7 @@ export const menus: MenuItem[] = [
     section: [
       {
         name: "Kanban",
-        href: routes.dashboard.apps.kanban,
+        href: routes.dashboard.kanban,
         icon: PiKanbanDuotone,
       },
     ],
@@ -57,11 +57,11 @@ export const menus: MenuItem[] = [
       {
         name: "Customers",
         icon: PiUsersDuotone,
-        href: routes.dashboard.management.customers.root,
+        href: routes.dashboard.customers.root,
         dropdownItems: [
           {
             name: "List",
-            href: routes.dashboard.management.customers.list,
+            href: routes.dashboard.customers.list,
           },
         ],
       },
@@ -73,17 +73,17 @@ export const menus: MenuItem[] = [
     section: [
       {
         name: "Charts",
-        href: routes.dashboard.widgets.charts,
+        href: routes.dashboard.charts,
         icon: PiChartLineUpDuotone,
       },
       {
         name: "Metrics",
-        href: routes.dashboard.widgets.metrics,
+        href: routes.dashboard.metrics,
         icon: PiSquaresFourDuotone,
       },
       {
         name: "Tables",
-        href: routes.dashboard.widgets.tables,
+        href: routes.dashboard.tables,
         icon: PiTableDuotone,
       },
     ],

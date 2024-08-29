@@ -19,6 +19,7 @@ const nextConfig = {
       "@mantine/nprogress",
       "react-icons/*",
     ],
+    missingSuspenseWithCSRBailout: false,
   },
 };
 

@@ -31,6 +31,7 @@
       "warn",
       { "fixMixedExportsWithInlineTypeSpecifier": true }
     ],
+    "import/no-anonymous-default-export": "off",
     "no-console": ["error", { "allow": ["warn", "error"] }]
   }
 }

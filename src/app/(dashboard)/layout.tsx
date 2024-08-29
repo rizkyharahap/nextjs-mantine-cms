@@ -1,0 +1,36 @@
+import { Metadata } from "next";
+
+import { Logo } from "@/components/logo";
+import { Paper, ScrollArea } from "@mantine/core";
+
+import { Header } from "./_components/Header";
+import { Sidebar } from "./_components/Sidebar";
+import classes from "./Layout.module.css";
+
+export const metadata: Metadata = {
+  title: "Admin | Retail",
+  description: "Admin Dashboard Retail from Enam Pilar Selaras",
+};
+
+export default function DashboardLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <main className={classes.root}>
+      <Paper className={classes.sidebarWrapper} withBorder>
+        <div className={classes.logoWrapper}>
+          <Logo w="3rem" />
+        </div>
+        <ScrollArea flex="1" px="md">
+          <Sidebar />
+        </ScrollArea>
+      </Paper>
+      <div className={classes.content}>
+        <Header />
+        <main className={classes.main}>{children}</main>
+      </div>
+    </main>
+  );
+}

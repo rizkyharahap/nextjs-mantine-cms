@@ -1,4 +1,4 @@
-import { DrawerOverlay } from '@mantine/core';
+import { DrawerOverlay } from "@mantine/core";
 
 export default {
   DrawerOverlay: DrawerOverlay.extend({

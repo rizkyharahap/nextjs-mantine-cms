@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 "use client";
 
 import { useState } from "react";
@@ -17,8 +16,6 @@ import {
 } from "@tanstack/react-query";
 
 import { client } from "./axios";
-
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 
 interface EnhancedMutationParams<
   TData = unknown,

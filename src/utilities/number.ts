@@ -9,19 +9,22 @@ interface FormatterOptions {
 
 const defaultOptions: Required<FormatterOptions> = {
   precision: 2,
-  thousandSeparator: ',',
-  decimalSeparator: '.',
-  suffix: '',
-  prefix: '',
+  thousandSeparator: ",",
+  decimalSeparator: ".",
+  suffix: "",
+  prefix: "",
   full: true,
 };
 
-export function formatDecimal(value: number | string, options?: FormatterOptions): string {
-  const currentValue = typeof value === 'string' ? parseFloat(value) : value;
+export function formatDecimal(
+  value: number | string,
+  options?: FormatterOptions,
+): string {
+  const currentValue = typeof value === "string" ? parseFloat(value) : value;
 
   if (Number.isNaN(currentValue)) {
     throw new Error(
-      'Invalid value. Please provide a valid number or string representation of a number.'
+      "Invalid value. Please provide a valid number or string representation of a number.",
     );
   }
 
@@ -30,12 +33,15 @@ export function formatDecimal(value: number | string, options?: FormatterOptions
     ...options,
   };
 
-  const parts = currentValue.toFixed(precision).split('.');
-  const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator);
+  const parts = currentValue.toFixed(precision).split(".");
+  const integerPart = parts[0].replace(
+    /\B(?=(\d{3})+(?!\d))/g,
+    thousandSeparator,
+  );
   const decimalPart = parts[1];
 
   return `${prefix}${integerPart}`
-    .concat(decimalPart ? `${decimalSeparator}${decimalPart}` : '')
+    .concat(decimalPart ? `${decimalSeparator}${decimalPart}` : "")
     .concat(suffix);
 }
 
@@ -43,20 +49,23 @@ export function formatInt(value: number | string, options?: FormatterOptions) {
   return formatDecimal(value, { ...options, precision: 0 });
 }
 
-export function formatPercentage(value: number | string, options?: FormatterOptions): string {
-  return formatDecimal(value, { ...options, suffix: '%' });
+export function formatPercentage(
+  value: number | string,
+  options?: FormatterOptions,
+): string {
+  return formatDecimal(value, { ...options, suffix: "%" });
 }
 
 export function formatCurrency(
   value: number | string,
-  currency = '$',
-  options?: FormatterOptions
+  currency = "$",
+  options?: FormatterOptions,
 ): string {
   return formatDecimal(value, { ...options, prefix: currency });
 }
 
 export function isNumber(value: unknown): value is number {
-  return typeof value === 'number' && !Number.isNaN(value);
+  return typeof value === "number" && !Number.isNaN(value);
 }
 
 export function randomInt({ min, max }: { min: number; max: number }) {

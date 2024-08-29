@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { createGetQueryHook } from '../helpers';
+import { createGetQueryHook } from "../helpers";
 
 export const Atom = z.object({
   id: z.string().cuid2(),
@@ -12,8 +12,8 @@ export const Atom = z.object({
 
 export type Atom = z.infer<typeof Atom>;
 
-const QUERY_KEY = 'atoms';
-const BASE_ENDPOINT = 'atoms';
+const QUERY_KEY = "atoms";
+const BASE_ENDPOINT = "atoms";
 
 export const useGetAtoms = createGetQueryHook({
   endpoint: BASE_ENDPOINT,

@@ -1,4 +1,4 @@
-import { RingProgress } from '@mantine/core';
+import { RingProgress } from "@mantine/core";
 
 export default {
   RingProgress: RingProgress.extend({

@@ -9,9 +9,10 @@ import {
   useState,
 } from "react";
 
+import invariant from "tiny-invariant";
+
 import { loadAccessToken } from "@/services/axios";
 import { getAccount } from "@/services/resources/account";
-import invariant from "tiny-invariant";
 
 interface AuthContextValues {
   isAuthenticated: boolean;

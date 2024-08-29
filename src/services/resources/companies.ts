@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { createPaginationQueryHook } from '../helpers';
+import { createPaginationQueryHook } from "../helpers";
 
 export const Company = z.object({
   id: z.string().cuid2(),
@@ -13,8 +13,8 @@ export const Company = z.object({
 
 export type Company = z.infer<typeof Company>;
 
-const QUERY_KEY = 'companies';
-const BASE_ENDPOINT = 'companies';
+const QUERY_KEY = "companies";
+const BASE_ENDPOINT = "companies";
 
 export const useGetCompanies = createPaginationQueryHook({
   endpoint: BASE_ENDPOINT,

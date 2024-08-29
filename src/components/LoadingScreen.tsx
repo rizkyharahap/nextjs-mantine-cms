@@ -1,4 +1,4 @@
-import { Center, Progress } from '@mantine/core';
+import { Center, Progress } from "@mantine/core";
 
 export function LoadingScreen() {
   return (

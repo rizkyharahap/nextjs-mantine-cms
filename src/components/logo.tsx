@@ -1,8 +1,8 @@
-import { Box, type BoxProps, type ElementProps } from '@mantine/core';
+import { Box, type BoxProps, type ElementProps } from "@mantine/core";
 
 interface LogoProps
-  extends Omit<BoxProps, 'children' | 'ref'>,
-    ElementProps<'svg', keyof BoxProps> {
+  extends Omit<BoxProps, "children" | "ref">,
+    ElementProps<"svg", keyof BoxProps> {
   size?: string | number;
 }
 

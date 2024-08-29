@@ -4,7 +4,7 @@ export function capitalize(str: string) {
 
 export function firstLetters(text: string) {
   return text
-    .split(' ')
+    .split(" ")
     .map((word) => word[0])
-    .join('');
+    .join("");
 }

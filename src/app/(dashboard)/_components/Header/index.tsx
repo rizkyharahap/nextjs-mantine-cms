@@ -1,8 +1,9 @@
 import Link from "next/link";
 
-import { Logo } from "@/components/logo";
-import { StickyHeader } from "@/components/StickyHeader";
 import { Group } from "@mantine/core";
+
+import { Logo } from "@/components/Logo";
+import { StickyHeader } from "@/components/StickyHeader";
 
 import { CurrentUser } from "./CurrentUser";
 import classes from "./Header.module.css";

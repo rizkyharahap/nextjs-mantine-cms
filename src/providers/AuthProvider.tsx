@@ -4,43 +4,56 @@ import {
   createContext,
   type ReactNode,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
 
-import { loadAccessToken } from "@/services/axios";
-import { getAccount } from "@/services/resources/account";
+import { redirect } from "next/navigation";
+
+import { checkSession, clearSession } from "@/services/auth";
 
 interface AuthContextValues {
-  isAuthenticated: boolean;
-  isInitialized: boolean;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  role: string | null;
+  name: string | null;
+  email: string | null;
 }
-
-const AuthContext = createContext<AuthContextValues | null>(null);
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
+const initialUserState: AuthContextValues = {
+  role: null,
+  name: null,
+  email: null,
+};
+
+const AuthContext = createContext<AuthContextValues | null>(null);
+
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [user, setUser] = useState<AuthContextValues>(initialUserState);
 
-  useEffect(() => {
-    loadAccessToken();
+  useLayoutEffect(() => {
+    if (checkSession()) {
+      // const token = local∏Storage.getItem("token");
+      const profile = localStorage.getItem("profile");
 
-    getAccount()
-      .then(() => setIsAuthenticated(true))
-      .catch(() => setIsAuthenticated(false))
-      .finally(() => setIsInitialized(true));
+      // const tokenPayload = parseJwt(token!);
+      const userStorage = JSON.parse(profile ?? "{}");
+
+      setUser({
+        role: "administrator",
+        name: userStorage?.name ?? null,
+        email: userStorage?.email ?? null,
+      });
+    } else {
+      clearSession();
+      redirect("/login");
+    }
   }, []);
 
-  const value = useMemo(
-    () => ({ isAuthenticated, isInitialized, setIsAuthenticated }),
-    [isAuthenticated, isInitialized],
-  );
+  const value = useMemo(() => user, [user]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

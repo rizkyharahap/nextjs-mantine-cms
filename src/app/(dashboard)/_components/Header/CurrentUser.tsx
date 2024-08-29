@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import {
   PiChatDuotone,
   PiGearSixDuotone,
@@ -11,40 +12,45 @@ import {
   PiUserSwitchDuotone,
 } from "react-icons/pi";
 
-import { useAuth } from "@/providers/AuthProvider";
-import { useGetAccount } from "@/services/resources/account";
-import { useLogout } from "@/services/resources/auth";
 import {
   Avatar,
   type AvatarProps,
   type ElementProps,
+  Loader,
   Menu,
 } from "@mantine/core";
+
+import { useMutation } from "@tanstack/react-query";
+
+import { useAuth } from "@/providers/AuthProvider";
+import { clearSession, logout } from "@/services/auth";
 
 type CurrentUserProps = Omit<AvatarProps, "src" | "alt"> &
   ElementProps<"div", keyof AvatarProps>;
 
 export function CurrentUser(props: CurrentUserProps) {
-  const { mutate: logout } = useLogout();
-  const { setIsAuthenticated } = useAuth();
-  const { data: user } = useGetAccount();
+  const router = useRouter();
 
-  const handleLogout = () => {
-    logout({ variables: null }, { onSuccess: () => setIsAuthenticated(false) });
-  };
+  const { mutate, isPending } = useMutation({
+    mutationFn: logout,
+    onSettled: () => {
+      clearSession();
+      router.push("/login");
+    },
+  });
+
+  const { name } = useAuth();
 
   return (
     <Menu>
       <Menu.Target>
         <Avatar
-          src={user?.avatarUrl}
-          alt={user?.displayName ?? "Current user"}
-          {...props}
+          name={name!}
           style={{ cursor: "pointer", ...props.style }}
-        >
-          CU
-        </Avatar>
+          color="initials"
+        />
       </Menu.Target>
+
       <Menu.Dropdown>
         <Menu.Item
           leftSection={
@@ -89,8 +95,15 @@ export function CurrentUser(props: CurrentUserProps) {
         <Menu.Divider />
 
         <Menu.Item
-          leftSection={<PiSignOut size="1rem" />}
-          onClick={handleLogout}
+          leftSection={
+            isPending ? (
+              <Loader color="blue" size="1rem" />
+            ) : (
+              <PiSignOut size="1rem" />
+            )
+          }
+          disabled={isPending}
+          onClick={() => mutate()}
         >
           Logout
         </Menu.Item>

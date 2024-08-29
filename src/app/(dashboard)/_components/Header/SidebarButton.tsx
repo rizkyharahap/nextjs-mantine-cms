@@ -4,10 +4,11 @@ import { useEffect } from "react";
 
 import { usePathname } from "next/navigation";
 
-import { HamburgerButton } from "@/components/HamburgerButton";
-import { Logo } from "@/components/logo";
 import { Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+
+import { HamburgerButton } from "@/components/HamburgerButton";
+import { Logo } from "@/components/Logo";
 
 import { Sidebar } from "../Sidebar";
 

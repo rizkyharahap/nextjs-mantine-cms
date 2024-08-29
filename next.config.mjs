@@ -12,11 +12,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: [
       "@mantine/core",
-      "@mantine/hooks",
       "@mantine/dates",
+      "@mantine/form",
       "@mantine/hooks",
       "@mantine/notifications",
-      "@mantine/nprogress",
       "react-icons/*",
     ],
     missingSuspenseWithCSRBailout: false,

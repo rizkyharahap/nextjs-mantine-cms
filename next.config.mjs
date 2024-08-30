@@ -11,6 +11,7 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: [
+      "@mantine/charts",
       "@mantine/core",
       "@mantine/dates",
       "@mantine/form",

@@ -1,11 +1,15 @@
 import { Stack, Title } from "@mantine/core";
 
 import { PageHeader } from "@/components/PageHeader";
+import { routes } from "@/constants/routes";
 
 import AdvanceDataTable from "./_components/AdvanceDataTable";
 import { SimpleTable } from "./_components/SimpleTable";
 
-const breadcrumbs = [{ label: "Dashboard", href: "/" }, { label: "Tables" }];
+const breadcrumbs = [
+  { label: "Dashboard", href: routes.dashboard.root },
+  { label: "Tables" },
+];
 
 export default function TablesPage() {
   return (

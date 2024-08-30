@@ -1,10 +1,10 @@
-import clsx from "clsx";
-
 import {
   ActionIcon,
   type ActionIconProps,
   type ElementProps,
 } from "@mantine/core";
+
+import clsx from "clsx";
 
 import classes from "./HamburgerButton.module.css";
 

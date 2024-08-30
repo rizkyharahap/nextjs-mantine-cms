@@ -1,12 +1,21 @@
 "use client";
 
-import React from "react";
+import { useMemo } from "react";
 
 import { Badge, MultiSelect, Radio, Stack, TextInput } from "@mantine/core";
 
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
-import { DataTable, useDataTable, usePagination } from "@/components/DataTable";
+import {
+  DataTable,
+  DataTableContainer,
+  DataTableContent,
+  DataTableFilters,
+  DataTableTabs,
+  DataTableTitle,
+  useDataTable,
+  usePagination,
+} from "@/components/DataTable";
 import { ExportButton } from "@/components/ExportButton";
 import { getCompanies } from "@/services/company";
 
@@ -16,20 +25,9 @@ export default function AdvanceDataTable() {
     limit: 10,
   });
 
-  const { data, isPending, isFetching } = useQuery({
-    queryKey: ["companies", page, limit],
-    queryFn: async () => getCompanies({ page, limit }),
-    placeholderData: keepPreviousData,
-  });
+  const { tabs, filters, order } = useDataTable({
+    orderConfig: { order: "asc", orderBy: "name" },
 
-  const totalRecords = data?.meta.total ?? 0;
-  const records = data?.data ?? [];
-
-  const uniqueStatesOptions = Array.from(
-    new Set(records.map((company) => company.state)),
-  );
-
-  const { tabs, filters } = useDataTable({
     tabsConfig: {
       tabs: [
         { value: "all", label: "All", counter: 10 },
@@ -45,9 +43,43 @@ export default function AdvanceDataTable() {
     },
   });
 
+  const { data, isPending, isFetching } = useQuery({
+    queryKey: ["getCompanies", page, limit],
+    queryFn: async () => await getCompanies({ page, limit }),
+    placeholderData: keepPreviousData,
+  });
+
+  const totalRecords = data?.meta.total ?? 0;
+  // const records = data?.data?.toSorted((prev, next)=>prev.name. ) ?? [];
+
+  const records = useMemo(() => {
+    const result = data?.data ?? [];
+
+    result.sort((prev, next) => {
+      if (prev[order.orderBy] < next[order.orderBy]) {
+        return -1;
+      }
+
+      if (prev[order.orderBy] > next[order.orderBy]) {
+        return 1;
+      }
+      return 0;
+    });
+
+    if (order.order === "desc") {
+      result.reverse();
+    }
+
+    return result;
+  }, [data?.data, order.order, order.orderBy]);
+
+  const uniqueStatesOptions = Array.from(
+    new Set(records.map((company) => company.state)),
+  );
+
   return (
-    <DataTable.Container>
-      <DataTable.Title
+    <DataTableContainer>
+      <DataTableTitle
         title="Richest companies"
         description="Top 10 richest companies in USA"
         actions={
@@ -57,12 +89,13 @@ export default function AdvanceDataTable() {
         }
       />
 
-      <DataTable.Tabs tabs={tabs.tabs} onChange={tabs.change} />
+      <DataTableTabs tabs={tabs.tabs} onChange={tabs.change} />
 
-      <DataTable.Filters filters={filters.filters} onClear={filters.clear} />
+      <DataTableFilters filters={filters.filters} onClear={filters.clear} />
 
-      <DataTable.Content>
-        <DataTable.Table
+      <DataTableContent>
+        <DataTable
+          highlightOnHover
           minHeight={400}
           page={page}
           records={records}
@@ -75,6 +108,7 @@ export default function AdvanceDataTable() {
           columns={[
             {
               accessor: "name",
+              sortable: true,
               filtering: Boolean(filters.filters.name),
               filter: (
                 <TextInput
@@ -144,8 +178,10 @@ export default function AdvanceDataTable() {
               ),
             },
           ]}
+          sortStatus={order.status}
+          onSortStatusChange={order.change}
         />
-      </DataTable.Content>
-    </DataTable.Container>
+      </DataTableContent>
+    </DataTableContainer>
   );
 }

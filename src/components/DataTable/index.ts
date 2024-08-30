@@ -1,24 +1,9 @@
-"use client";
-
-import { DataTable as MantineDataTable } from "mantine-datatable";
-
-import { CardTitle } from "../CardTitle";
-import { DataTableActions } from "./DataTableActions";
-import { DataTableContainer } from "./DataTableContainer";
-import { DataTableContent } from "./DataTableContent";
-import { DataTableFilters } from "./DataTableFilters";
-import { DataTableTabs } from "./DataTableTabs";
-import { useDataTable } from "./useDataTable";
-import { usePagination } from "./usePagination";
-
-export const DataTable = {
-  Title: CardTitle,
-  Container: DataTableContainer,
-  Content: DataTableContent,
-  Tabs: DataTableTabs,
-  Filters: DataTableFilters,
-  Actions: DataTableActions,
-  Table: MantineDataTable,
-};
-
-export { useDataTable, usePagination };
+export * from "mantine-datatable";
+export { CardTitle as DataTableTitle } from "../CardTitle";
+export * from "./DataTableActions";
+export * from "./DataTableContainer";
+export * from "./DataTableContent";
+export * from "./DataTableFilters";
+export * from "./DataTableTabs";
+export * from "./useDataTable";
+export * from "./usePagination";

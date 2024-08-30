@@ -72,7 +72,7 @@ export function useDataTable<SortableFields>({
       remove: handleRemoveFilter,
     },
     order: {
-      change: setSortStatus,
+      change: setSortStatus as any, // TODO: fix type
       orderBy: sortStatus.columnAccessor as keyof SortableFields,
       order: sortStatus.direction,
       status: sortStatus,

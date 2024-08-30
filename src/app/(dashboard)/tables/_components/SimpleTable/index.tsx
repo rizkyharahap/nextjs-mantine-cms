@@ -2,7 +2,7 @@
 
 import { Group, Table } from "@mantine/core";
 
-import { AddButton } from "@/components/AddButton";
+import { AddButton } from "@/components/Button";
 import { ExportButton } from "@/components/ExportButton";
 import { TableContainer } from "@/components/TableContainer";
 

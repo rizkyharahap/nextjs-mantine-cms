@@ -16,6 +16,7 @@ const nextConfig = {
       "@mantine/form",
       "@mantine/hooks",
       "@mantine/notifications",
+      "nextjs-toploader/*",
       "react-icons/*",
     ],
     missingSuspenseWithCSRBailout: false,

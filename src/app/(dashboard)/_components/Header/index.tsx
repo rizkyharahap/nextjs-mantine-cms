@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Group } from "@mantine/core";
 
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/assets/Logo";
 import { StickyHeader } from "@/components/StickyHeader";
 
 import { CurrentUser } from "./CurrentUser";

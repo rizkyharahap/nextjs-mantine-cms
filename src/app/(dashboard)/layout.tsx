@@ -2,7 +2,7 @@ import { type Metadata } from "next";
 
 import { Paper, ScrollArea } from "@mantine/core";
 
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/assets/Logo";
 import { AuthProvider } from "@/providers/AuthProvider";
 
 import Footer from "./_components/Footer";

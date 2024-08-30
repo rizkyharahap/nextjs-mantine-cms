@@ -1,9 +1,9 @@
 "use client";
 
+import { Button, Center, Flex, Text, Title } from "@mantine/core";
+
 import { useRouter } from "nextjs-toploader/app";
 import { PiArrowLeft } from "react-icons/pi";
-
-import { Button, Center, Flex, Text, Title } from "@mantine/core";
 
 import classes from "./NotFound.module.css";
 
@@ -27,7 +27,7 @@ export default function NotFoundPage() {
             inherit
             variant="gradient"
             component="span"
-            gradient={{ from: "pink", to: "yellow" }}
+            gradient={{ from: "orange", to: "blue" }}
           >
             404
           </Text>

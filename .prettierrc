@@ -5,11 +5,11 @@
   "printWidth": 80,
   "tabWidth": 2,
   "importOrder": [
-    "^react$",
-    "^next$",
+    "^react($|/.*)",
+    "^next($|/.*)",
+    "^@mantine(|/.*)",
+    "^@tanstack($|/.*)$",
     "<THIRD_PARTY_MODULES>",
-    "^@mantine/(.*)$",
-    "^@tanstack/(.*)$",
     "^[@/]",
     "^[./]"
   ],

@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 import { Stack, Text, Title } from "@mantine/core";
 
-import { UnderlineShape } from "@/components/UnderlineShape";
+import { UnderlineShape } from "@/assets/UnderlineShape";
 import { checkSession } from "@/services/auth";
 
 import { LoginForm } from "./_components/LoginForm";

@@ -1,13 +1,15 @@
 import { type Metadata } from "next";
-
 import { Inter } from "next/font/google";
-import NextTopLoader from "nextjs-toploader";
+import Head from "next/head";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.layer.css";
 import "@mantine/dates/styles.layer.css";
 import { Notifications } from "@mantine/notifications";
 import "@mantine/notifications/styles.layer.css";
+
+import "mantine-datatable/styles.layer.css";
+import NextTopLoader from "nextjs-toploader";
 
 import { ReactQueryClientProvider } from "@/providers/ReactQueryClientProvider";
 import { theme } from "@/theme";
@@ -28,10 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <Head>
         <ColorSchemeScript />
+      </Head>
+
+      <body className={inter.className}>
         <MantineProvider theme={theme}>
-          <NextTopLoader />
+          <NextTopLoader showSpinner={false} />
           <Notifications position="top-right" />
           <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
         </MantineProvider>

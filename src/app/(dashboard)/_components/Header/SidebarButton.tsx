@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 import { Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
+import { Logo } from "@/assets/Logo";
 import { HamburgerButton } from "@/components/HamburgerButton";
-import { Logo } from "@/components/Logo";
 
 import { Sidebar } from "../Sidebar";
 

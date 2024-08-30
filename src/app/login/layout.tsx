@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Box, Center, Flex, SimpleGrid, Text, Title } from "@mantine/core";
 
 import demoImg from "@/assets/app-demo.webp";
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/assets/Logo";
 
 export default function LoginLayout({
   children,

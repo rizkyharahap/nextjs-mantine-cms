@@ -11,7 +11,7 @@ export default function DashboardPage() {
           inherit
           variant="gradient"
           component="span"
-          gradient={{ from: "pink", to: "yellow" }}
+          gradient={{ from: "orange", to: "blue" }}
         >
           Mantine
         </Text>

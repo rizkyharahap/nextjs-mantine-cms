@@ -1,7 +1,6 @@
-import dayjs, { type Dayjs, isDayjs } from "dayjs";
+import dayjs, { type Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { z } from "zod";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(relativeTime);
@@ -20,16 +19,3 @@ export function formatDate(
 export function formatRelativeDate(value: Date | CustomDate | string) {
   return date(value).fromNow();
 }
-
-/** Validate and transform date string to dayjs instance */
-export const dateSchema = z.custom<CustomDate>((value) => {
-  if (
-    value instanceof Date ||
-    isDayjs(value) ||
-    (typeof value === "string" && date(value).isValid())
-  ) {
-    return date(value);
-  }
-
-  throw new Error("Invalid date format");
-});

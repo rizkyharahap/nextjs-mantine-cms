@@ -1,5 +1,4 @@
 import { useRouter } from "next/navigation";
-import { z } from "zod";
 
 import {
   Box,
@@ -11,7 +10,7 @@ import {
   type StackProps,
   TextInput,
 } from "@mantine/core";
-import { useForm, zodResolver } from "@mantine/form";
+import { isEmail, isNotEmpty, useForm } from "@mantine/form";
 
 import { useMutation } from "@tanstack/react-query";
 
@@ -19,17 +18,14 @@ import { login } from "@/services/auth";
 
 interface LoginFormProps extends Omit<StackProps, "children"> {}
 
-export const LoginBodySchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
-  remember: z.boolean().optional(),
-});
-
 export function LoginForm(props: LoginFormProps) {
   const router = useRouter();
   const form = useForm({
     mode: "uncontrolled",
-    validate: zodResolver(LoginBodySchema),
+    validate: {
+      email: isEmail("Invalid email"),
+      password: isNotEmpty("Must be not empty"),
+    },
     initialValues: {
       email: "john.doe@example.com",
       password: "123456789",

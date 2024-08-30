@@ -7,7 +7,7 @@ import loadingOverlay from "./loading-overlay";
 import menu from "./menu";
 import notification from "./notification";
 import ringProgress from "./ring-progress";
-import table from "./table";
+// import table from "./table";
 import tooltip from "./tooltip";
 
 export default {
@@ -20,6 +20,6 @@ export default {
   ...menu,
   ...notification,
   ...ringProgress,
-  ...table,
+  // ...table,
   ...tooltip,
 };

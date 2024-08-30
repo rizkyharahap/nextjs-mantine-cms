@@ -1,4 +1,4 @@
-import { Box, BoxProps, ElementProps } from "@mantine/core";
+import { Box, type BoxProps, type ElementProps } from "@mantine/core";
 
 interface UnderlineShape
   extends Omit<BoxProps, "children" | "ref">,
